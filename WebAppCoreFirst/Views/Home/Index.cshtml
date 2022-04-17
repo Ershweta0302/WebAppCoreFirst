@@ -1,0 +1,36 @@
+﻿@model List<WebAppCoreFirst.Models.Employee>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<h2 style="color:greenyellow;text-align:center">Employee Details</h2>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Adress</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Email</td>
+            <td>@item.Phone</td>
+            <td>@item.Address</td>
+            <td><a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-success">Edit</a></td>
+            <td><a asp-action="Delete" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+
+        </tr>
+    }
+
+</table>
+<a href="@Url.Action("AddEmp","Home")" class="btn btn-primary">Add-New</a>
